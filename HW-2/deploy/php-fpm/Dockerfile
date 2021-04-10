@@ -7,6 +7,7 @@ WORKDIR ${DATA_ROOT}
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-RUN mkdir -p ${DATA_ROOT}/public
+RUN mkdir -p ${DATA_ROOT}/public/symfony
+RUN mkdir -p ${DATA_ROOT}/public/www
 
 COPY deploy/php-fpm/php-fpm.d /usr/local/etc/php-fpm.d

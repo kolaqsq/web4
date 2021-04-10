@@ -1,12 +1,35 @@
 server {
     server_name ${NGINX_WWW_SERVER_NAME};
     root /data/public/www;
+    fastcgi_cache_key "$scheme$request_method$host$request_uri$cookie_codeAuth";
+
+    set $no_cache 0;
+
+    if ($request_method != GET) {
+         set $no_cache 1;
+    }
+
+    if ($query_string != "") {
+         set $no_cache 1;
+    }
+
+    add_header x-fastcgi-cache $upstream_cache_status;
 
     location / {
+        fastcgi_cache fastcgicache;
+        fastcgi_cache_valid 200 60m;
+        fastcgi_cache_bypass $no_cache;
+        fastcgi_no_cache $no_cache;
+
         try_files $uri /index.php$is_args$args;
     }
 
     location ~ ^/index\.php(/|$) {
+        fastcgi_cache fastcgicache;
+        fastcgi_cache_valid 200 60m;
+        fastcgi_cache_bypass $no_cache;
+        fastcgi_no_cache $no_cache;
+
         fastcgi_pass php-upstream;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
         include fastcgi_params;
@@ -14,6 +37,21 @@ server {
         fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
         fastcgi_param DOCUMENT_ROOT $realpath_root;
         internal;
+    }
+
+    location /docs/ {
+        alias /data/public/www/static/docs/;
+        autoindex on;
+    }
+
+    location /img/ {
+        alias /data/public/www/static/img/;
+        autoindex on;
+    }
+
+    location /video/ {
+        alias /data/public/www/static/video/;
+        autoindex on;
     }
 
     location ~ \.php$ {

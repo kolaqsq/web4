@@ -7,6 +7,8 @@ services:
       dockerfile: deploy/nginx/Dockerfile
     volumes:
       - ./deploy/nginx/templates:/etc/nginx/templates
+      - ./public/symfony:/data/public/symfony
+      - ./public/www:/data/public/www
     ports:
       - "8081:80"
     environment:
