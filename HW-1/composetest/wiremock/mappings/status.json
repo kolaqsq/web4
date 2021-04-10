@@ -1,0 +1,21 @@
+{
+  "request": {
+    "urlPath": "/check_true",
+    "method": "GET",
+    "basicAuth": {
+      "username": "user",
+      "password": "pass"
+    },
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "success": "true"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "body": "true indeed"
+  }
+}
