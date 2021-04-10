@@ -1,6 +1,6 @@
 server {
     server_name ${NGINX_WWW_SERVER_NAME};
-    root /data/public;
+    root /data/public/www;
 
     location / {
         try_files $uri /index.php$is_args$args;

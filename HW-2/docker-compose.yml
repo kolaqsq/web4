@@ -20,4 +20,5 @@ services:
       context: ""
       dockerfile: deploy/php-fpm/Dockerfile
     volumes:
-      - ./public:/data/public
+      - ./public/symfony:/data/public/symfony
+      - ./public/www:/data/public/www
