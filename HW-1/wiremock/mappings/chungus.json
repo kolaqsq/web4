@@ -1,0 +1,10 @@
+{
+  "request": {
+    "urlPath": "/check_your_chungus_size",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "body": "Requesting chungus size..."
+  }
+}
