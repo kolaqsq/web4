@@ -12,6 +12,7 @@ services:
     environment:
       - NGINX_CUSTOM_SERVER_NAME=project-2021.local
       - NGINX_SYMFONY_SERVER_NAME=project-symfony.local
+      - NGINX_WWW_SERVER_NAME=project-www.local
 
   php:
     container_name: project-php
