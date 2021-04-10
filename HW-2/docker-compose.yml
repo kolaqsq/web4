@@ -9,12 +9,14 @@ services:
       - ./deploy/nginx/templates:/etc/nginx/templates
       - ./public/symfony:/data/public/symfony
       - ./public/www:/data/public/www
+      - ./public/newpool:/data/public/newpool
     ports:
       - "8081:80"
     environment:
       - NGINX_CUSTOM_SERVER_NAME=project-2021.local
       - NGINX_SYMFONY_SERVER_NAME=project-symfony.local
       - NGINX_WWW_SERVER_NAME=project-www.local
+      - NGINX_NEWPOOL_SERVER_NAME=project-newpool.local
 
   php:
     container_name: project-php
@@ -24,3 +26,4 @@ services:
     volumes:
       - ./public/symfony:/data/public/symfony
       - ./public/www:/data/public/www
+      - ./public/newpool:/data/public/newpool

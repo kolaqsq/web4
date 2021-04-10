@@ -5,3 +5,7 @@ upstream php-upstream {
 upstream symfony-upstream {
     server php:9001;
 }
+
+upstream newpool-upstream {
+    server php:9002;
+}

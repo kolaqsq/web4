@@ -8,3 +8,4 @@ RUN set -x ; \
 
 RUN mkdir -p ${DATA_ROOT}/public/symfony
 RUN mkdir -p ${DATA_ROOT}/public/www
+RUN mkdir -p ${DATA_ROOT}/public/newpool
