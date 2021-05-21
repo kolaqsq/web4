@@ -1,0 +1,224 @@
+db.clinics.insertOne({
+    "clinic_name": "ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ РЯЗАНСКОЙ ОБЛАСТИ \"ГОРОДСКАЯ ДЕТСКАЯ ПОЛИКЛИНИКА № 2\"",
+    "clinic_phone": "+7 (4912) 44-55-96",
+    "clinic_address": "Россия, 390023, обл Рязанская, г Рязань, ул Циолковского, д.10",
+})
+
+db.specializations.insertMany([
+    {"specialization_name": "Регистрация электрокардиограммы"},
+    {"specialization_name": "Исследование уровня глюкозы в крови"},
+    {"specialization_name": "Прием невролога"},
+    {"specialization_name": "Прием офтальмолога"},
+    {"specialization_name": "Прием эндокринолога"},
+])
+
+db.clinics.updateOne({clinic_phone: "+7 (4912) 44-55-96"}, {
+    $set:{
+        "specializations":[
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461ae")},
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461af")},
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461b2")},
+        ]
+    }
+})
+
+db.clinics.updateOne({clinic_phone: "+7 (4912) 44-55-96"}, {
+    $set:{
+        "specializations":[
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461ae")},
+        ]
+    }
+})
+
+db.clinics.find({"specializations._id": ObjectId("60a6dedbbd1dd3b7d45b99c8")})
+
+db.clinics.updateOne({clinic_phone: "+7 (4912) 44-55-96"}, {
+    $unset:{
+        "specializations":[
+            {"_id": ObjectId()},
+        ]
+    }
+})
+
+db.clinics.insertMany([
+    {
+        "clinic_name": "ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ РЯЗАНСКОЙ ОБЛАСТИ \"ГОРОДСКАЯ ДЕТСКАЯ ПОЛИКЛИНИКА № 3\"",
+        "clinic_phone": "+7 (4912) 36-73-30",
+        "clinic_address": "Россия, 390039, обл Рязанская, г Рязань, ул Интернациональная, д.1в",
+        "specializations":[
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461b0")},
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461ae")},
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461b1")},
+        ]
+    },
+    {
+        "clinic_name": "ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ РЯЗАНСКОЙ ОБЛАСТИ \"ГОРОДСКАЯ ДЕТСКАЯ ПОЛИКЛИНИКА №1 \"",
+        "clinic_phone": "+7 (4912) 76-27-88",
+        "clinic_address": "Россия, 390005, обл Рязанская, г Рязань, ул Дзержинского, д.16а",
+        "specializations":[
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461b0")},
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461af")},
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461b1")},
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461b2")},
+        ]
+    },
+    {
+        "clinic_name": "ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ РЯЗАНСКОЙ ОБЛАСТИ \"ГОРОДСКОЙ КЛИНИЧЕСКИЙ РОДИЛЬНЫЙ ДОМ № 2\"",
+        "clinic_phone": "+7 (4912) 92-95-86",
+        "clinic_address": "Россия, 390026, обл Рязанская, г Рязань, ул Стройкова, д.79/51",
+        "specializations":[
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461b1")},
+            {"specialization_id":ObjectId("60a6cb9c1bc59b399e2461b0")},
+        ]
+    },
+])
+
+db.dates.insertMany([
+    {
+        "available_date": "2020-07-10",
+        "available_time": [
+            {
+                "_id": ObjectId(),
+                "time": "09:45:00",
+                "available": true,
+            },
+            {
+                "_id": ObjectId(),
+                "time": "10:15:00",
+                "available": true,
+            },
+        ],
+        "clinic_id": ObjectId("60a6c5e91bc59b399e2461aa"),
+        "specialization_id": ObjectId("60a6cb9c1bc59b399e2461af"),
+        "available": true,
+    },
+    {
+        "available_date": "2020-08-05",
+        "available_time": [
+            {
+                "_id": ObjectId(),
+                "time": "10:15:00",
+                "available": true,
+            },
+            {
+                "_id": ObjectId(),
+                "time": "10:45:00",
+                "available": false,
+            },
+        ],
+        "clinic_id": ObjectId("60a6d5551bc59b399e2461b7"),
+        "specialization_id": ObjectId("60a6cb9c1bc59b399e2461b0"),
+        "available": true,
+    },
+    {
+        "available_date": "2020-07-31",
+        "available_time": [
+            {
+                "_id": ObjectId(),
+                "time": "09:45:00",
+                "available": false,
+            },
+            {
+                "_id": ObjectId(),
+                "time": "11:15:00",
+                "available": true,
+            },
+        ],
+        "clinic_id": ObjectId("60a6d5551bc59b399e2461b7"),
+        "specialization_id": ObjectId("60a6cb9c1bc59b399e2461ae"),
+        "available": true,
+    },
+    {
+        "available_date": "2020-08-21",
+        "available_time": [
+            {
+                "_id": ObjectId(),
+                "time": "11:15:00",
+                "available": true,
+            },
+            {
+                "_id": ObjectId(),
+                "time": "11:45:00",
+                "available": true,
+            },
+        ],
+        "clinic_id": ObjectId("60a6d5551bc59b399e2461b8"),
+        "specialization_id": ObjectId("60a6cb9c1bc59b399e2461af"),
+        "available": true,
+    },
+])
+
+db.dates.drop()
+
+db.dates.find({"available_time.available": false}, {"available_time.available": true, "available_time._id": true,})
+
+db.appointments.insertMany([
+    {
+        "clinic_id": ObjectId("60a6d5551bc59b399e2461b7"),
+        "specialization_id": ObjectId("60a6cb9c1bc59b399e2461b0"),
+        "date_id": ObjectId("60a6e4b51bc59b399e2461c4"),
+        "time_id": ObjectId("60a6e4b5bd1dd3b7d45b99cf"),
+        "customer_name": "Рублев Елизарий Вениаминович",
+        "customer_birthday": "1972-08-09",
+        "customer_phone": "+7 (922) 672-97-59",
+    },
+    {
+        "clinic_id": ObjectId("60a6d5551bc59b399e2461b7"),
+        "specialization_id": ObjectId("60a6cb9c1bc59b399e2461ae"),
+        "date_id": ObjectId("60a6e4b51bc59b399e2461c5"),
+        "time_id": ObjectId("60a6e4b5bd1dd3b7d45b99d0"),
+        "customer_name": "Гулевич Аиша Богдановна",
+        "customer_birthday": "1985-01-17",
+        "customer_phone": "+7 (922) 769-59-46",
+        "customer_e-mail": "AishaGulevich986@mail.ru",
+    },
+])
+
+db.specializations.insertOne(
+    {"specialization_name": "Меня сейчас удалят... Или не удалят"},
+)
+
+db.specializations.deleteMany(
+    {"specialization_name": "Меня сейчас удалят... Или не удалят"},
+    {writeConcern: {w: 1}}
+)
+
+db.appointments.aggregate([
+    {$match: {"_id": ObjectId("60a6e8321bc59b399e2461c8")}},
+    {$lookup: {
+        from: "clinics",
+        localField: "clinic_id",
+        foreignField: "_id",
+        as: "clinic"
+    }},
+    {$unwind: "$clinic"},
+
+    {$lookup: {
+        from: "specializations",
+        localField: "specialization_id",
+        foreignField: "_id",
+        as: "specialization"
+    }},
+    {$unwind: "$specialization"},
+
+    {$lookup: {
+        from: "dates",
+        localField: "time_id",
+        foreignField: "available_time._id",
+        as: "date"
+    }},
+    {$unwind: "$date"},
+    {$unwind: "$date.available_time"},
+
+    {$match: {"date.available_time._id": ObjectId("60a6e4b5bd1dd3b7d45b99cf")}},
+
+    {$project: {
+        "clinic.clinic_name": 1,
+        "specialization.specialization_name": 1,
+        "date.available_date": 1,
+        "date.available_time.time": 1,
+        "customer_name": 1,
+        "customer_birthday": 1,
+        "customer_phone": 1,
+    }},
+]).explain()
