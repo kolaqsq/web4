@@ -1,0 +1,81 @@
+query {
+  viewer {
+    login,
+    name,
+    email,
+    url,
+    repositories(
+      affiliations:OWNER,
+      first:5,
+      orderBy:{field:CREATED_AT, direction:DESC}
+    ) {
+      edges {
+        node {
+          url,
+          name,
+          description,
+          createdAt
+        }
+      }
+    }
+  }
+}
+
+mutation { 
+  createRepository(
+    input: {
+      name: "sueta with GraphQL",
+      visibility: PRIVATE
+    }
+  )
+  {
+    repository {
+      name
+      id
+    }
+  } 
+}
+
+mutation {
+  createIssue(
+    input: {
+      repositoryId: "MDEwOlJlcG9zaXRvcnkzNzAwOTE3MjA=",
+      title: "suetim"
+    }
+  )
+  {
+    issue {
+      id
+      title
+    }
+  }
+}
+
+mutation {
+  updateIssue(
+    input: {
+      id: "MDU6SXNzdWU4OTkwNDgxMDE=",
+      body: "suetim even more"
+    }
+  )
+  {
+    issue {
+      title
+      id
+    }
+  }
+}
+
+mutation {
+  closeIssue(
+    input: {
+      issueId: "MDU6SXNzdWU4OTkwNDgxMDE="
+    }
+  )
+  {
+    issue {
+      title
+      id
+    }
+  }
+}
