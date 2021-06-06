@@ -1,4 +1,6 @@
 {
+    "name": "kolaq/web4",
+    "description": "New symfony project for educational purpose",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
