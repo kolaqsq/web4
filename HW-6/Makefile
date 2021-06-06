@@ -52,24 +52,6 @@ php-exec: ## Run any php command in our container
 
 #composer-remote: DIR = "./vendor:/data/vendor"
 composer-remote:
-	docker run --name composer-remote --interactive --volume $(LOCALHOST_PROJECT_DIR):/app composer $(CMD) &
-	docker cp composer-remote:/app $(LOCALHOST_PROJECT_DIR)/app &
-	docker rm composer-remote
-
+	docker run --rm --interactive --volume $(shell pwd):/app composer $(CMD)
 
 .PHONY: composer-remote
-
-#	docker run --name composer-remote --interactive --tty --volume $(DIR) composer $(CMD) &
-#	docker cp composer-remote:data/vendor app &
-#	docker rm composer-remote &
-
-#docker run --name test --interactive --tty --volume $PWD:/app composer $(RUN_ARGS) &
-#	docker cp test:app $PWD &
-#	docker rm test &
-
-
-
-
-
-
-
