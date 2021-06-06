@@ -1,0 +1,8 @@
+controllers:
+    resource: ../../src/Controller/
+    type: annotation
+    prefix: /sugoma
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation

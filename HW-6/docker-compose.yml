@@ -1,29 +1,30 @@
 version: "3"
 services:
   nginx:
-    container_name: project-nginx
+    container_name: hw6-nginx
     build:
-      context: ""
+      context: .
       dockerfile: deploy/nginx/Dockerfile
     volumes:
       - ./deploy/nginx/templates:/etc/nginx/templates
-      - ./public/symfony:/data/public/symfony
-      - ./public/www:/data/public/www
-      - ./public/newpool:/data/public/newpool
     ports:
       - "8081:80"
     environment:
-      - NGINX_CUSTOM_SERVER_NAME=project-2021.local
       - NGINX_SYMFONY_SERVER_NAME=project-symfony.local
-      - NGINX_WWW_SERVER_NAME=project-www.local
-      - NGINX_NEWPOOL_SERVER_NAME=project-newpool.local
+    links:
+      - php
 
   php:
-    container_name: project-php
+    container_name: hw6-php
     build:
-      context: ""
+      context: .
       dockerfile: deploy/php-fpm/Dockerfile
+    env_file:
+      - .env
     volumes:
-      - ./public/symfony:/data/public/symfony
-      - ./public/www:/data/public/www
-      - ./public/newpool:/data/public/newpool
+      - ./public:/data/public:cached
+      - ./bin:/data/bin:cached
+      - ./config:/data/config:cached
+      - ./src:/data/src:cached
+      - ./vendor:/data/vendor:cached
+      - ./var/cache/:/data/var/cache:cached

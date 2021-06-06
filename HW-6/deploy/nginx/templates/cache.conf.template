@@ -1,1 +1,0 @@
-fastcgi_cache_path /tmp/nginx_cache levels=1:2 keys_zone=fastcgicache:10m inactive=70m max_size=512m;
