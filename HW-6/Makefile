@@ -50,7 +50,6 @@ php-exec: ## Run any php command in our container
 
 .PHONY: php-exec
 
-#composer-remote: DIR = "./vendor:/data/vendor"
 composer-remote:
 	docker run --rm --interactive --volume $(shell pwd):/app composer $(CMD)
 
