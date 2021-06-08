@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Api\Controller;
 
-use App\Utils\AuthService;
+use App\Api\Utils\AuthService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -48,18 +48,30 @@ class TestController
                 'Content-type' => 'application/json',
             ]
         );
-//        return new Response(
-//            json_encode(
-//                [
-//                    "aboba" => "not_available",
-//                    "amogus" => "restricted",
-//                    "chungus" => "big"
-//                ]
-//            ),
-//            Response::HTTP_OK,
-//            [
-//                'Content-type' => "application/json"
-//            ]
-//        );
+    }
+
+    /**
+     * @Route(path="/users", methods={"GET"})
+     */
+    public function users()
+    {
+        return new Response(
+            json_encode(
+                [
+                    [
+                        'username' => 'kolaq',
+                        'password' => 'qwerty'
+                    ],
+                    [
+                        'username' => 'admin',
+                        'password' => 'admin'
+                    ],
+                ]
+            ),
+            Response::HTTP_OK,
+            [
+                'Content-type' => 'application/json',
+            ]
+        );
     }
 }

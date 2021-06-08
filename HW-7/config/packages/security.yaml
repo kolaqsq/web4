@@ -1,0 +1,41 @@
+security:
+  enable_authenticator_manager: true
+
+  password_hashers:
+    # this internal class is used by Symfony to represent in-memory users
+    # (the 'InMemoryUser' class was introduced in Symfony 5.3.
+    # In previous versions it was called 'User')
+    Symfony\Component\Security\Core\User\InMemoryUser: 'auto'
+
+  encoders:
+    # this internal class is used by Symfony to represent in-memory users
+    Symfony\Component\Security\Core\User\User: 'auto'
+
+  providers:
+    backend_users:
+      memory:
+        users:
+          kolaq: { password: '$2y$13$7tDdHeW1lS4Eh2BFoXJum.NtziPZdnUnEjvF69/lK7QWUb7bQ99gi', roles: [ 'ROLE_ADMIN' ] }
+  #          kolaq: { password: '$2y$13$f.R8itUP8lGfotyiqmWPue/WsziXOBR0yaR7xHqQgZ2r3qiaXYyTW', roles: [ 'ROLE_ADMIN' ] }
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      pattern: ^/sugoma
+      lazy: true
+      http_basic:
+        realm: Go away you sussy baka
+
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true
+
+  # Easy way to control access for large sections of your site
+  # Note: Only the *first* access control that matches will be used
+  access_control:
+  # - { path: ^/admin, roles: ROLE_ADMIN }
+  # - { path: ^/profile, roles: ROLE_USER }
