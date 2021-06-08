@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Utils\AuthService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,22 +17,49 @@ class TestController
     /**
      * @Route(path="/", methods={"GET"})
      */
-    public function index(): Response
+    public function index(Request $request, AuthService $authService)
     {
+        $authMetaData = $request->headers->get('Authorization', '');
+
+        if ($authMetaData !== '' && $authService->checkCredentials($authMetaData)) {
+            return new  Response(
+                json_encode(
+                    [
+                        'message' => 'The thing works!!!',
+                    ]
+                ),
+                Response::HTTP_OK,
+                [
+                    'Content-type' => 'application/json',
+                ]
+            );
+        }
+
         return new Response(
             json_encode(
                 [
-                    "aboba" => "not_available",
-                    "amogus" => "restricted",
-                    "chungus" => "big"
+                    'message' => 'Not Authorized',
                 ]
             ),
-            Response::HTTP_OK,
+            Response::HTTP_UNAUTHORIZED,
+
             [
-                'Content-type' => "application/json"
+                'www-Authenticate' => 'Basic realm="Access to the staging site", charset="UTF-8"',
+                'Content-type' => 'application/json',
             ]
         );
+//        return new Response(
+//            json_encode(
+//                [
+//                    "aboba" => "not_available",
+//                    "amogus" => "restricted",
+//                    "chungus" => "big"
+//                ]
+//            ),
+//            Response::HTTP_OK,
+//            [
+//                'Content-type' => "application/json"
+//            ]
+//        );
     }
 }
-
-?>

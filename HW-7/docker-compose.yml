@@ -1,7 +1,7 @@
 version: "3"
 services:
   nginx:
-    container_name: hw6-nginx
+    container_name: hw7-nginx
     build:
       context: .
       dockerfile: deploy/nginx/Dockerfile
@@ -15,7 +15,7 @@ services:
       - php
 
   php:
-    container_name: hw6-php
+    container_name: hw7-php
     build:
       context: .
       dockerfile: deploy/php-fpm/Dockerfile

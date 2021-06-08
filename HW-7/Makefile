@@ -46,7 +46,7 @@ print-compose-file:## print compose file
 
 php-exec: CMD?=-r 'phpinfo();'
 php-exec: ## Run any php command in our container
-	docker exec hw6-php php $(CMD)
+	docker exec hw7-php php $(CMD)
 
 .PHONY: php-exec
 
