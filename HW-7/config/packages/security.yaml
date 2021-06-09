@@ -7,16 +7,18 @@ security:
     # In previous versions it was called 'User')
     Symfony\Component\Security\Core\User\InMemoryUser: 'auto'
 
-  #  encoders:
-  #    # this internal class is used by Symfony to represent in-memory users
-  #    Symfony\Component\Security\Core\User\User: 'auto'
-
   providers:
     backend_users:
       memory:
         users:
-          #          kolaq: { password: '$2y$13$7tDdHeW1lS4Eh2BFoXJum.NtziPZdnUnEjvF69/lK7QWUb7bQ99gi', roles: [ 'ROLE_ADMIN' ] }
-          kolaq: { password: '$2y$13$f.R8itUP8lGfotyiqmWPue/WsziXOBR0yaR7xHqQgZ2r3qiaXYyTW', roles: [ 'ROLE_ADMIN' ] }
+          kolaq:
+            #            password: '$2y$13$7tDdHeW1lS4Eh2BFoXJum.NtziPZdnUnEjvF69/lK7QWUb7bQ99gi' # qwerty
+            password: '$2y$13$f.R8itUP8lGfotyiqmWPue/WsziXOBR0yaR7xHqQgZ2r3qiaXYyTW' # qwerty1
+            roles: [ 'ROLE_ADMIN' ]
+          user:
+            #            password: '$2y$13$7tDdHeW1lS4Eh2BFoXJum.NtziPZdnUnEjvF69/lK7QWUb7bQ99gi' # qwerty
+            password: '$2y$13$f.R8itUP8lGfotyiqmWPue/WsziXOBR0yaR7xHqQgZ2r3qiaXYyTW' # qwerty1
+            roles: [ 'ROLE_USER' ]
 
   firewalls:
     dev:
@@ -24,7 +26,9 @@ security:
       security: false
     main:
       pattern: ^/sugoma
+      lazy: true
       http_basic:
+        provider: backend_users
         realm: Go away
 
       # activate different ways to authenticate
@@ -36,5 +40,5 @@ security:
   # Easy way to control access for large sections of your site
   # Note: Only the *first* access control that matches will be used
   access_control:
-  # - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/sugoma, roles: ROLE_ADMIN }
   # - { path: ^/profile, roles: ROLE_USER }
