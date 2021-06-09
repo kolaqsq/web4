@@ -74,4 +74,22 @@ class TestController
             ]
         );
     }
+
+    /**
+     * @Route(path="/admin", methods={"GET"})
+     */
+    public function admin()
+    {
+        return new Response(
+            json_encode(
+                [
+                    'gorira_status' => 'spinning',
+                ]
+            ),
+            Response::HTTP_OK,
+            [
+                'Content-type' => 'application/json',
+            ]
+        );
+    }
 }
