@@ -1,11 +1,7 @@
 api-controllers:
-    resource: ../../src/Api/Controller/
+    resource: ../../src/Api/
     type: annotation
-    prefix: /sugoma
-
-core-controllers:
-    resource: ../../src/Core/Controller/
-    type: annotation
+    prefix: /api/v1
 
 kernel:
     resource: ../../src/Kernel.php

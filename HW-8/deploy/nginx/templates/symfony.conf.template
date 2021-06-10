@@ -1,6 +1,5 @@
 server {
     server_name ${NGINX_SYMFONY_SERVER_NAME};
-    # root /data/public/symfony;
     root /data/public;
 
     location / {

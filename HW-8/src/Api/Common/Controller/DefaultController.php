@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Controller;
+namespace App\Api\Common\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,6 +21,7 @@ class DefaultController
                 [
                     'message' => 'HomePage',
                 ],
+                JSON_THROW_ON_ERROR
             ),
             Response::HTTP_OK,
             [
