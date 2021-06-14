@@ -3,7 +3,7 @@ LOCALHOST_PROJECT_DIR := $(shell pwd)
 VERSION := $(shell git describe --tags 2> /dev/null || git rev-parse --short HEAD)
 
 # IMPORT CONFIG WITH ENVS. You can change the default config with `make cnf="config_special.env" build`
-cnf ?= $(LOCALHOST_PROJECT_DIR)/deploy/config.env
+cnf ?= deploy/config.env
 include $(cnf)
 
 # EXPORT VARIABLES to be available in our docker-compose scripts
