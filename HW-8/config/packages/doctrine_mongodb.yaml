@@ -16,3 +16,9 @@ doctrine_mongodb:
           dir: '%kernel.project_dir%/src/Core/User/Document'
           prefix: 'App\Core\User\Document'
           alias: AppCoreUser
+        App\Core\Clinic\Document:
+          is_bundle: false
+          type: annotation
+          dir: '%kernel.project_dir%/src/Core/Clinic/Document'
+          prefix: 'App\Core\Clinic\Document'
+          alias: AppCoreClinic
