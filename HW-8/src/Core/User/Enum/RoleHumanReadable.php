@@ -8,6 +8,8 @@ use App\Core\Common\Enum\AbstractEnum;
 
 final class RoleHumanReadable extends AbstractEnum
 {
-    public const ADMIN = 'Администратор';
-    public const USER  = 'Пользователь';
+    public const ADMIN  = 'Администратор';
+    public const USER   = 'Пользователь';
+    public const CHIEF  = 'Начальник';
+    public const WORKER = 'Работник';
 }
