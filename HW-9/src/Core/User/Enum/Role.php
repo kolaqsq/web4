@@ -8,8 +8,8 @@ use App\Core\Common\Enum\AbstractEnum;
 
 class Role extends AbstractEnum
 {
-    public const ADMIN    = 'ROLE_ADMIN';
-    public const USER     = 'ROLE_USER';
-    public const CHIEF    = 'ROLE_CHIEF';
-    public const WORKER   = 'ROLE_WORKER';
+    public const ADMIN  = 'ROLE_ADMIN';
+    public const USER   = 'ROLE_USER';
+    public const CHIEF  = 'ROLE_CHIEF';
+    public const WORKER = 'ROLE_WORKER';
 }

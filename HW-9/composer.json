@@ -16,6 +16,7 @@
     "doctrine/mongodb-odm-bundle": "^4.2",
     "friendsofsymfony/rest-bundle": "^3.0",
     "gedmo/doctrine-extensions": "^3.0",
+    "graylog2/gelf-php": "^1.7",
     "sensio/framework-extra-bundle": "^6.1",
     "symfony/console": "5.2.*",
     "symfony/dotenv": "5.2.*",

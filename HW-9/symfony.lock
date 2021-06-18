@@ -76,6 +76,9 @@
     "gedmo/doctrine-extensions": {
         "version": "v3.0.5"
     },
+    "graylog2/gelf-php": {
+        "version": "1.7.0"
+    },
     "jean85/pretty-package-versions": {
         "version": "1.6.0"
     },
@@ -93,6 +96,9 @@
     },
     "monolog/monolog": {
         "version": "2.2.0"
+    },
+    "paragonie/constant_time_encoding": {
+        "version": "v2.4.0"
     },
     "php": {
         "version": "7.4.9"

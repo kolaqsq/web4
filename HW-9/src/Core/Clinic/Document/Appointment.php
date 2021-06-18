@@ -59,6 +59,11 @@ class Appointment extends AbstractDocument
         return $this->clinic->getId();
     }
 
+    public function getClinicName(): string
+    {
+        return $this->clinic->getName();
+    }
+
     public function getSpecialization(): ?string
     {
         return $this->specialization;
