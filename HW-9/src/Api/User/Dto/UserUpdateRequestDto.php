@@ -9,9 +9,20 @@ use Symfony\Component\Validator\Constraints as Assert;
 class UserUpdateRequestDto
 {
     /**
-     * @Assert\Length(max=30, min=3)
+     * @Assert\Length(min=3)
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9@]*$/",
+     *     message="Incorrect data!"
+     * )
      */
     public ?string $firstName = null;
 
+    /**
+     * @Assert\Length(min=3)
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9@]*$/",
+     *     message="Incorrect data!"
+     * )
+     */
     public ?string $lastName = null;
 }

@@ -71,7 +71,7 @@ services:
       - GRAYLOG_MONGODB_URI=mongodb://tutorial-api-mongodb:27017/graylog
       - GRAYLOG_HTTP_ENABLE_CORS=true
     entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
-    restart: always
+#    restart: always
     depends_on:
       - db
       - elasticsearch
