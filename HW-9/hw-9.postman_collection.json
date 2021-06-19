@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "f4c8e7a3-d6e0-414a-b5a0-d02855b78af6",
+		"name": "hw-8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users_show",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users_showOne",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/users/60ccc2fecaacbb3cf75ae1e2",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"60ccc2fecaacbb3cf75ae1e2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clinics_show",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/clinics",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"clinics"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "slice",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clinics_add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ РЯЗАНСКОЙ ОБЛАСТИ \\\"ГОРОДСКАЯ ДЕТСКАЯ ПОЛИКЛИНИКА № 77\\\"\",\r\n    \"address\": \"Россия, 390023, обл Рязанская, г Рязань, ул Циолковского, д.12\",\r\n    \"phone\": \"74912445777\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/clinics",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"clinics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clinics_edit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"address\": \"Россия, 390023, обл Рязанская, г Рязань, ул Циолковского, д.10\",\r\n    \"phone\": \"74912441111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/clinics/60cda6c4d228bf19c11ee692",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"clinics",
+						"60cda6c4d228bf19c11ee692"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clinics_delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/clinics/60cda6c4d228bf19c11ee692",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"clinics",
+						"60cda6c4d228bf19c11ee692"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Appointments_show",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/clinics/60ccf52618ceb51bd4526ac2/appointments",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"clinics",
+						"60ccf52618ceb51bd4526ac2",
+						"appointments"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "slice",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Appointments_showOne",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/clinics/appointments/60cd094b1217d54f694c2e94",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"clinics",
+						"appointments",
+						"60cd094b1217d54f694c2e94"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Appointments_add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"2021-08-16T15:30:00.000Z\",\r\n    \"specialization\": \"Прием офтальмолога\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/clinics/60ccf52618ceb51bd4526ac2/appointments",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"clinics",
+						"60ccf52618ceb51bd4526ac2",
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Appointments_edit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"2021-08-16T08:30:00.000Z\",\r\n    \"specialization\": \"Прием невролога\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/clinics/appointments/60cda78bd228bf19c11ee693",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"clinics",
+						"appointments",
+						"60cda78bd228bf19c11ee693"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Appointments_delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "88005553535:1q2w3e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://tutorial-api.local:8081/api/v1/clinics/appointments/60cda78bd228bf19c11ee693",
+					"protocol": "http",
+					"host": [
+						"tutorial-api",
+						"local"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"clinics",
+						"appointments",
+						"60cda78bd228bf19c11ee693"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
